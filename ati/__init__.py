@@ -5,14 +5,15 @@ from typing import Any
 import pydantic_settings as pyds
 
 
-class Settings(pyds.BaseSettings):
+class ATISettings(pyds.BaseSettings):
     # Base
-    cooldown: int
-    dtype: str
-    learning_rate: float
-    seed: int
     steps: int
-    warmup: int
+    dtype: str | Any
+    seed: int | None = 0
+    learning_rate: float | None = None
+    cooldown: int | None = None
+    warmup: int | None = None
+    epochs: int | None = None
 
     # Dimensions
     batch_size: int | None = None
@@ -99,7 +100,7 @@ class Settings(pyds.BaseSettings):
 
     # misc float
     abstain_threshold: float | None = None
-    scale_pos_weight: float | None
+    scale_pos_weight: float | None = None
     t_eps: float | None = None
     cfg: float | None = None
 
@@ -112,13 +113,14 @@ class Settings(pyds.BaseSettings):
     # misc
     labels: Any | None = None
     model_type: Any | None = None
-    attention_type: Any | None
+    attention_type: Any | None = None
 
-    additional_kwargs: dict[str, Any]
+    additional_kwargs: dict[str, Any] | None = None
 
 
-def main():
-    pass
+def main(**kwargs):
+    ati_settings = ATISettings(**kwargs)
+    return ati_settings
 
 
 if __name__ == "__main__":
