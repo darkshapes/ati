@@ -114,6 +114,8 @@ class Settings(pyds.BaseSettings):
     model_type: Any | None = None
     attention_type: Any | None
 
+    additional_kwargs: dict[str, Any]
+
 
 def main():
     pass
