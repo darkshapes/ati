@@ -2,11 +2,21 @@
 
 ## About
 
-ATI is a standard endpoint layer for computer-led training and inference parameters. Its objective is to abstract away the
+ATI is a standard endpoint layer for computer-led training and inference parameters to prevent the need to rewrite parameter input classes for every model.
 
 ## Integrate
 
 Add to an existing Python project
+
+```pyproject.toml
+[project.dependencies]
+...
+"ati @ git+https://github.com/darkshapes/ati"
+...
+
+[project.scripts]
+<your_project_name>_ati_plug = "your_project_name.module:train" # Or whatever
+```
 
 ```py
 >>> from ati import ATISettings                         # Import the template
@@ -21,8 +31,9 @@ Add to an existing Python project
 ## From an Environment File
 
 ```.env
-steps=20
-dtype="float16
+<your_project_name>/.env    # File Path
+steps=20                    # parameters you want to use
+dtype="float16"
 ```
 
 ## CLI

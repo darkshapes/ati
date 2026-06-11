@@ -12,42 +12,61 @@ description: Standard parameter endpoint layer template for computer-led trainin
 - Making an entrypoint for Python model training
 - Making an entrypoint for Python model inference
 
-## Integrate
+## Integrate into Python Project
 
-Use ATI for a project in one of the following ways:
+To use ATI for a project
+
+1. Add dependency
 
 ```pyproject.toml
-[dependencies]
+[project.dependencies]
 ...
 "ati @ git+https://github.com/darkshapes/ati"
 ...
+
+[project.scripts]
+<your_project_name>_ati_plug = "<your_project_name>.<example_module>:<example_func>"
 ```
+
+```
+
+2. Import into Python
 
 ```py
 >>> from ati import ATISettings                         # Import the template
 >>> ati_set = ATISettings(steps=20,dtype="float16")     # Minimum arguments
-
->>> import torch
->>> import numpy as np
->>> ati_set_torch = ATISettings(steps=20,dtype=torch.float16)       # Framework agnostic
->>> ati_set_numpy = ATISettings(steps=20,dtype=np.dtype(np.float64))
 ```
 
-```.env
-steps=20
-dtype="float16
-```
+3. Add training parameters
 
-```sh
-<project_name>_ati_plug --steps 20 --dtype "float16"      # Replace <project_name> with the python project
-```
+  A. Using code
+
+  ```
+  >>> import torch
+  >>> import numpy as np
+  >>> ati_set_torch = ATISettings(steps=20, dtype=torch.float16, ...)       # Framework agnostic
+  >>> ati_set_numpy = ATISettings(steps=20, dtype=np.dtype(np.float64), ...)
+  ```
+
+  B. Through project or shell environment
+
+  ```.env
+  steps=20
+  dtype="float16"
+  ```
+
+  C. From Command Line
+
+  ```sh
+  <project_name>_ati_plug --steps 20 --dtype "float16"      # Replace <project_name> with the project's name that includes ATI
+  ```
 
 
-## Parameter Options
+## Launch Parameters
 
 ```
 abstain_threshold: float | None = None
-additional_kwargs: dict[str, Any] | None = None
+additional_kwargs: dict[str, Any] | None = None   # Use this to add any special parameters that aren't included here
 agent_prompt: str | None = None
 alpha: float | None = None
 attention_type: Any | None = None
