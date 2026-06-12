@@ -5,7 +5,6 @@ description: Standard parameter endpoint layer template for computer-led trainin
 
 # Automated Training Inference
 
-
 ## Use When
 
 - Limiting boilerplate and a single dependency is OK

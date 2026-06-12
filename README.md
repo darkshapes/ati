@@ -8,6 +8,8 @@ ATI is a standard endpoint layer for computer-led training and inference paramet
 
 Add to an existing Python project
 
+pyproject.toml:
+
 ```pyproject.toml
 [project.dependencies]
 ...
@@ -17,6 +19,8 @@ Add to an existing Python project
 [project.scripts]
 <your_project_name>_ati_plug = "your_project_name.module:train" # Or whatever
 ```
+
+example_module.py
 
 ```py
 >>> from ati import ATISettings                         # Import the template
@@ -30,8 +34,9 @@ Add to an existing Python project
 
 ## From an Environment File
 
+.env:
+
 ```.env
-<your_project_name>/.env    # File Path
 steps=20                    # parameters you want to use
 dtype="float16"
 ```
@@ -42,7 +47,7 @@ dtype="float16"
 template_ati_plug --steps 20 --dtype "float16"      # Same as above
 ```
 
-To add an ati_plug to your project:
+To add a detectable entrypoint to your project make an `ati_plug`
 
 ```sh
 <your_project_name>_ati_plug --steps 20 --dtype "float16"      # Fill with your project's name
