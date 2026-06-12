@@ -22,6 +22,15 @@ pyproject.toml:
 
 example_module.py
 
+Enhance existing config classes:
+
+```py
+>>> from ati import ATISettings
+class ExistingConfigClass(ATISettings):
+```
+
+Or build new ones:
+
 ```py
 >>> from ati import ATISettings                         # Import the template
 >>> ati_set = ATISettings(steps=20,dtype="float16")     # Minimum arguments

@@ -31,10 +31,17 @@ To use ATI for a project
 
 2. Import into Python
 
-```py
->>> from ati import ATISettings                         # Import the template
->>> ati_set = ATISettings(steps=20,dtype="float16")     # Minimum arguments
-```
+  A.
+  ```py
+  >>> from ati import ATISettings
+  class ExistingConfigClass(ATISettings):
+  ```
+
+  B.
+  ```py
+  >>> from ati import ATISettings                         # Import the template
+  >>> ati_set = ATISettings(steps=20,dtype="float16")     # Minimum arguments
+  ```
 
 3. Add training parameters
 
